@@ -15,6 +15,8 @@ const routes = require('./routes/koa');
 const { PORT = 3000, ISSUER = `http://localhost:${PORT}` } = process.env;
 configuration.findAccount = Account.findAccount;
 
+configuration.issueRefreshToken = (ctx, client) => client.grantTypeAllowed('refresh_token');
+
 let server;
 
 (async () => {
